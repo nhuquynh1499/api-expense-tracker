@@ -6,7 +6,6 @@ const cors = require('cors');
 const connect =require('./DB/connection');
 const apiGroupRoute = require('./api/routes/group.route');
 const apiTransactionRoute = require('./api/routes/transaction.route');
-const apiTimeRoute = require('./api/routes/time.route');
 
 connect().then(() => {
   console.log('Connect success');
@@ -21,7 +20,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/api/group', apiGroupRoute);
 app.use('/api/transaction', apiTransactionRoute);
-app.use('/api/time', apiTimeRoute);
 
 app.listen(port, () => 
 	console.log(`Example app listening at http://localhost:${port}`)
