@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 var reportSchema = new mongoose.Schema({
   month: Number,
@@ -7,7 +7,8 @@ var reportSchema = new mongoose.Schema({
   endingBalance: Number,
   usedMoney: Number,
   earnedMoney: Number,
-  listTransaction: Object
-})
+  listOutflow: { type: Object, default: {} },
+  listInflow: { type: Object, default: {} }
+});
 
-module.exports = mongoose.model('reports', reportSchema)
+module.exports = mongoose.model("reports", reportSchema);

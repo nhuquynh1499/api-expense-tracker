@@ -7,4 +7,6 @@ router.get('/', controller.index); // Hien thi tat ca database duoi dang json.
 
 router.post('/', controller.create); // Them moi vao database.
 
+router.put('/', controller.update);
+
 module.exports = router;
