@@ -2,11 +2,6 @@ const userModel = require('../../models/user.model');
 
 const jwt = require('jsonwebtoken');
 
-module.exports.index = async (req, res, next) => {
-  var users = await userModel.find();
-  res.json(users);
-}
-
 module.exports.login = async (req, res, next) => {
   const { username, password } = req.body;
   console.log(username, password);
