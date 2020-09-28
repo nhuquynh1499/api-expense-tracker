@@ -7,7 +7,6 @@ module.exports.index = async (req, res, next) => {
   } else {
     reports = await reportModel.find();
   }
-  console.log(req.query.m, req.query.y);
   if (req.query.m && req.query.y) {
     reports = reports.find((item) => {
       return (item.month === Number(req.query.m) && item.year === Number(req.query.y));
@@ -18,10 +17,11 @@ module.exports.index = async (req, res, next) => {
 
 module.exports.create = async (req, res, next) => {
   // Them moi vao database.
-  const { month, year, groupId, amount } = req.body;
+  const { month, year, groupId, amount, userId } = req.body;
   var report = await reportModel.findOne({
     month: month,
     year: year,
+    userId: userId
   });
   if (report) {
     let { listOutflow, usedMoney, earnedMoney, listInflow } = report;
@@ -69,6 +69,7 @@ module.exports.create = async (req, res, next) => {
         earnedMoney: 0,
         listOutflow: listOutflow,
         listInflow: {},
+        userId: userId
       });
     } else {
       const listInflow = { [groupId]: amount };
@@ -81,6 +82,7 @@ module.exports.create = async (req, res, next) => {
         earnedMoney: amount,
         listOutflow: {},
         listInflow: listInflow,
+        userId: userId
       });
     }
   }
