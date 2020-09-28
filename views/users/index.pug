@@ -1,0 +1,15 @@
+head
+  style
+    include ../styles/user.css
+body
+  table
+    tr 
+      th Name
+      th Email
+      th Delete
+    each user in users
+      tr
+        td= user.name
+        td= user.email
+        td.action
+          a(href="") Xóa
