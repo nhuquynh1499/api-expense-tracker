@@ -7,9 +7,10 @@ module.exports.index = async (req, res, next) => {
   } else {
     reports = await reportModel.find();
   }
+  console.log(req.query.m, req.query.y);
   if (req.query.m && req.query.y) {
-    reports.filter((item) => {
-      return (item.month === req.query.m && item.year === req.query.y);
+    reports = reports.find((item) => {
+      return (item.month === Number(req.query.m) && item.year === Number(req.query.y));
     })
   }
   res.json(reports);
