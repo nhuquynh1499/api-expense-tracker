@@ -1,15 +1,16 @@
 const reportModel = require("../../models/report.model"); // Khai báo cấu hình Model
 
 module.exports.index = async (req, res, next) => {
-  // Hien thi tat ca database duoi dang json
   let reports;
-  if (req.query.m && req.query.y) {
-    reports = await reportModel.findOne({
-      month: req.query.m,
-      year: req.query.y,
-    });
+  if (req.params.userId) {
+    reports = await reportModel.find({ userId: req.params.userId });
   } else {
     reports = await reportModel.find();
+  }
+  if (req.query.m && req.query.y) {
+    reports.filter((item) => {
+      return (item.month === req.query.m && item.year === req.query.y);
+    })
   }
   res.json(reports);
 };
