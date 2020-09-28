@@ -26,6 +26,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'pug');
 app.set('views', './views');
 
+app.get('/', (req, res) => {
+  res.render('./index');
+})
 app.use('/user', userRoute);
 app.use('/api/group', apiGroupRoute);
 app.use('/api/transaction', apiTransactionRoute);
