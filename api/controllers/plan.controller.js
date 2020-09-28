@@ -2,7 +2,12 @@ const planModel = require("../../models/plan.model"); // Khai báo cấu hình M
 
 module.exports.index = async (req, res, next) => {
   // Hien thi tat ca database duoi dang json
-  var plans = await planModel.find();
+  var plans;
+  if (req.params.userId) {
+    plans = await planModel.find({ userId: req.params.userId});
+  } else {
+    plans = await planModel.find();
+  }
   res.json(plans);
 };
 
@@ -13,8 +18,8 @@ module.exports.create = async (req, res, next) => {
 };
 
 module.exports.update = async (req, res, next) => {
-  const { time, groupId, amount } = req.body;
-  const plans = await planModel.find({ groupId: groupId });
+  const { time, groupId, amount, userId } = req.body;
+  const plans = await planModel.find({ userId: userId, groupId: groupId });
   if (plans.length > 0) {
     const plan = plans.find((plan) => {
       const getTimeOfTransaction = new Date(time).getTime();
