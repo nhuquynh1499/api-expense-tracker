@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 var planSchema = new mongoose.Schema({
+  userId: String,
   groupId: String,
   goal: Number,
   amount: Number,

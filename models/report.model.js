@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 var reportSchema = new mongoose.Schema({
+  userId: String,
   month: Number,
   year: Number,
   beginningBalance: Number,
