@@ -3,10 +3,9 @@ const userModel = require('../../models/user.model');
 const jwt = require('jsonwebtoken');
 
 module.exports.login = async (req, res, next) => {
-  const { username, password } = req.body;
-  console.log(username, password);
+  const { email, password } = req.body;
 
-  await userModel.findOne({ username: username})
+  await userModel.findOne({ email: email})
           .then(user => {
             if (!user) {
               return res.status(404).send({message: 'No user found'});

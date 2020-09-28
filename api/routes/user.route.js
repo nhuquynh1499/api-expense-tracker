@@ -5,6 +5,8 @@ var controller = require('../controllers/user.controller');
 
 router.get('/', controller.index);
 
+router.get('/:id', controller.getAUser);
+
 router.post('/', controller.create);
 
 module.exports = router;
