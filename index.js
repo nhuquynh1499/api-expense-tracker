@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const cors = require('cors');
 const connect =require('./DB/connection');
 const userRoute = require('./routes/user.route');
+const transactionRoute = require('./routes/transaction.route');
+const groupRoute = require('./routes/group.route');
 const apiGroupRoute = require('./api/routes/group.route');
 const apiTransactionRoute = require('./api/routes/transaction.route');
 const apiPlanRoute = require('./api/routes/plan.route');
@@ -30,6 +32,8 @@ app.get('/', (req, res) => {
   res.render('./index');
 })
 app.use('/user', userRoute);
+app.use('/transaction', transactionRoute);
+app.use('/group', groupRoute);
 app.use('/api/group', apiGroupRoute);
 app.use('/api/transaction', apiTransactionRoute);
 app.use('/api/planning', apiPlanRoute);

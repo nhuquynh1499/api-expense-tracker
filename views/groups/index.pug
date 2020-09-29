@@ -1,0 +1,36 @@
+extends ../layouts/common.pug
+
+block content
+  h1.d-flex.justify-content-between.align-items-center
+    span Group List
+    a.btn.btn-primary(href="/group/create") New
+  table.table.table-hover
+    thead
+      tr
+        th Icon
+        th Name
+        th Type
+        th Delete
+        th Update
+    tbody
+    each group in groups
+      tr
+        td
+          if(!group.icon)
+            img(src="https://loremflickr.com/320/240", width='30')
+          else  
+            img(src=group.icon, width='30')
+        td= group.name
+        td.text-white
+          case group.type
+            when 0
+              span.bg-danger.py-2.px-3.rounded-lg Khoản chi
+            when 1
+              span.bg-info.py-2.px-3.rounded-lg Khoản thu
+            when 2
+              span.bg-warning.py-2.px-3.rounded-lg Vay/nợ
+        td
+          a(href=`/group/${group._id}/update`) Sửa
+        td
+          a(href=`/group/${group._id}/delete`) Xóa
+  

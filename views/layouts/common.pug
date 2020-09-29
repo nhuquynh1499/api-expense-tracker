@@ -1,0 +1,14 @@
+head
+  link(rel="stylesheet", href="/custom.css")
+  link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+
+body
+  ul.d-flex.flex-row.navbar-nav
+    li.nav-item.mr-4
+      a.nav-link(href="/user") Users
+    li.nav-item.mr-4
+      a.nav-link(href="/transaction") Transactions
+    li.nav-item.mr-4
+      a.nav-link(href="/group") Groups
+  .container.pt-5
+    block content

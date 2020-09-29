@@ -1,15 +1,22 @@
-head
-  style
-    include ../styles/user.css
-body
-  table
-    tr 
-      th Name
-      th Email
-      th Delete
-    each user in users
-      tr
-        td= user.name
-        td= user.email
-        td.action
-          a(href="") Xóa
+extends ../layouts/common.pug
+
+block content
+  h1.d-flex.justify-content-between.align-items-center
+    span Group List
+    a.btn.btn-primary(href="/user/create") New
+  table.table.table-hover
+    thead
+      tr 
+        th Name
+        th Email
+        th Update
+        th Delete
+    tbody
+      each user in users
+        tr
+          td= user.name
+          td= user.email
+          td
+            a(href=`/user/${user._id}/update`) Sửa
+          td
+            a(href=`/user/${user._id}/delete`) Xóa
