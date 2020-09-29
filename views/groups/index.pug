@@ -7,20 +7,20 @@ block content
   table.table.table-hover
     thead
       tr
-        th Icon
         th Name
+        th Icon
         th Type
         th Delete
         th Update
     tbody
     each group in groups
       tr
+        td= group.name
         td
           if(!group.icon)
             img(src="https://loremflickr.com/320/240", width='30')
           else  
             img(src=group.icon, width='30')
-        td= group.name
         td.text-white
           case group.type
             when 0
