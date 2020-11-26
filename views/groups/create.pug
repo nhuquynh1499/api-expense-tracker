@@ -1,0 +1,22 @@
+extends ../layouts/common.pug
+
+block content
+  h1 Create a group
+  
+  if error
+    .alert.alert-danger= error
+  
+  form(method="POST", action="/group/create", enctype="multipart/form-data")
+    .form-group
+      label(for="name") Name: 
+      input.form-control(type="text", name="name")
+    .form-group
+      label(for="type") Type: 
+      select.form-control(name="type")
+        option(value='0') Khoản chi
+        option(value='1') Khoản thu
+        option(valie='2') Vay/nợ
+    .form-group
+      label(for='avatar') Avatar
+      input#avatar.form-control-file(type='file', name='avatar')
+    button.btn.btn-primary Create

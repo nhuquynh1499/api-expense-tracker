@@ -1,0 +1,23 @@
+extends ../layouts/common.pug
+
+block content
+  h1 Update a group
+
+  form(method="POST", action="/group/" + group.id + "/update", enctype="multipart/form-data")
+    img(src= group.avatar, width='320')
+    .form-group
+      span Name: 
+      span= group.name
+    .form-group
+      label(for="name") New name: 
+      input.form-control(type="text", name="name")
+    .form-group
+      label(for="type") Type: 
+      select.form-control(name="type")
+        option(value='0') Khoản chi
+        option(value='1') Khoản thu
+        option(valie='2') Vay/nợ
+    .form-group
+      label(for='icon') Change Icon
+      input#avatar.form-control-file(type='file', name='icon')
+    button.btn.btn-primary Update

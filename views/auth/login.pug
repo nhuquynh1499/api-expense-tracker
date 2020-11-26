@@ -1,0 +1,18 @@
+head
+  link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+
+body.text-center
+  h1.h3.mb-3.font-weight-normal Login
+
+  if (errors)
+    each error in errors
+      .alert.alert-danger= error
+      
+  form.form-signin.container-sm(method="POST", action="/auth/login")
+    .form-group
+      label.sr-only(for="email") Email: 
+      input.form-control(type="text", required, placeholder="Email address", name="email", value = values ? values.email : '')
+    .form-group
+      label.sr-only(for="password") Password: 
+      input.form-control(type="password", required, placeholder="Password", name="password", value = values ? values.password : '')
+    button.btn.btn-primary.btn-block(type="submit") Login

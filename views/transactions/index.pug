@@ -3,7 +3,7 @@ extends ../layouts/common.pug
 block content
   h1.d-flex.justify-content-between.align-items-center
     span Group List
-    a.btn.btn-primary(href="/group/create") New
+    a.btn.btn-primary(href="/transaction/create") New
   table.table.table-hover
     thead
       tr 
@@ -23,6 +23,6 @@ block content
           td= transaction.note
           td= transaction.time
           td
-            a(href="") Sửa
+            a(href=`/transaction/${transaction._id}/update`) Sửa
           td
-            a(href="") Xóa
+            a(href=`/transaction/${transaction._id}/delete`) Xóa

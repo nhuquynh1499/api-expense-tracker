@@ -7,6 +7,7 @@ const connect =require('./DB/connection');
 const userRoute = require('./routes/user.route');
 const transactionRoute = require('./routes/transaction.route');
 const groupRoute = require('./routes/group.route');
+const loginRoute = require('./routes/auth.route');
 const apiGroupRoute = require('./api/routes/group.route');
 const apiTransactionRoute = require('./api/routes/transaction.route');
 const apiPlanRoute = require('./api/routes/plan.route');
@@ -34,6 +35,7 @@ app.get('/', (req, res) => {
 app.use('/user', userRoute);
 app.use('/transaction', transactionRoute);
 app.use('/group', groupRoute);
+app.use('/login', loginRoute);
 app.use('/api/group', apiGroupRoute);
 app.use('/api/transaction', apiTransactionRoute);
 app.use('/api/planning', apiPlanRoute);
